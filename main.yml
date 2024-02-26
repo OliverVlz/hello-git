@@ -1,0 +1,22 @@
+name: "CI/CD"
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: "Instalar dependencias"
+        run: npm install
+
+      - name: "Ejecutar pruebas"
+        run: npm test
+
+      - name: "Deployar a producción"
+        run: npm run deploy
